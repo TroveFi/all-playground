@@ -1,3 +1,32 @@
+1. protocols to consider for yield farming implentation:
+Mainnet:
+IncrementFi
+BloctoSwap
+Flowty
+Trado.one
+KittyPunch / PunchSwap
+More.Markets
+Sturdy.Finance
+Ankr
+Sudocat
+Hitdex
+NBA Top Shot Lending (via Flowty)
+Versus
+Zealy/TaskOn campaigns
+
+Testnet:
+IncrementFi
+Trado Finance (Trado.one)
+More.Markets
+KittyPunch / PunchSwap
+Celer Network (cBridge)
+Ankr
+USDC (via Celer)
+Blocto Wallet EVM
+Uniswap forks (community)
+
+2. MEV strategies
+
 # TroveFi: The AI-Powered Yield Raffle Game
 
 ### [Live App](https://startling-lolly-07ea9a.netlify.app/)
