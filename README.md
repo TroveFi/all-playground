@@ -1,3 +1,4 @@
+Currently away, ready to continue building soon & sorting out socials / growth avenues etc.
 1. protocols to consider for yield farming implentation:
 Mainnet:
 IncrementFi
@@ -26,6 +27,10 @@ Blocto Wallet EVM
 Uniswap forks (community)
 
 2. MEV strategies
+
+Build out core product for live production.
+Additional condisderation brainstorm:
+More likely to risk what has already been staked? Potential for building features for user to use their staked funds here?
 
 # TroveFi: The AI-Powered Yield Raffle Game
 
