@@ -1,3 +1,6 @@
+Working on Contracts Notes:
+
+
 Currently away, ready to continue building soon & sorting out socials / growth avenues etc.
 1. protocols to consider for yield farming implentation:
 Mainnet:
