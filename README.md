@@ -1,5 +1,7 @@
 Working on Contracts Notes:
-
+X
+Y
+MEV addition?
 
 Currently away, ready to continue building soon & sorting out socials / growth avenues etc.
 1. protocols to consider for yield farming implentation:
@@ -34,6 +36,27 @@ Uniswap forks (community)
 Build out core product for live production.
 Additional condisderation brainstorm:
 More likely to risk what has already been staked? Potential for building features for user to use their staked funds here?
+
+TO:
+
+🤖 Autonomous Rebalancing Engine
+Every 5 Minutes:
+
+🧠 ML Risk Assessment: Uses your trained risk models to evaluate strategy safety
+📊 Market Analysis: Monitors volatility, liquidity, and market stress
+🔍 Opportunity Scanning: Identifies optimal yield opportunities across chains
+
+Every 4 Hours:
+
+⚡ Optimal Allocation: ML calculates best fund distribution
+💰 Smart Execution: Automatically deploys funds to optimal strategies
+🎯 Performance Tracking: Learns from results to improve decisions
+
+Immediate Response:
+
+🚨 Emergency Exits: Automatically exits if strategy risk > 80%
+🔄 Market Adaptation: Reduces risk in stress conditions
+📈 Yield Maximization: Moves funds to better opportunities
 
 # TroveFi: The AI-Powered Yield Raffle Game
 
