@@ -3,6 +3,9 @@ X
 Y
 MEV addition?
 
+Current Dummy Values to Replace to Shift to Prod:
+
+
 Currently away, ready to continue building soon & sorting out socials / growth avenues etc.
 1. protocols to consider for yield farming implentation:
 Mainnet:
