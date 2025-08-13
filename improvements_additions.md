@@ -1,3 +1,31 @@
+NOW:
+🟡 MODIFY/REPLACE
+Bridge Replacement (as you noted):
+
+Remove: LayerZeroBridge.sol
+Replace with: Celer or Flow Bridge implementation
+
+Cross-Chain Strategy:
+
+Keep but modify: FlowCelerBridgeStrategy.sol - Celer is real on Flow
+Modify: FlowCrossChainMegaYieldStrategy.sol - Focus on real bridges (Celer, deBridge, Axelar)
+
+🔴 REMOVE (Not Flow-Native)
+
+SuperlendStrategy.sol - This is Etherlink/Aave specific ❌
+PancakeSwapV3Strategy.sol - PancakeSwap doesn't exist on Flow ❌
+FlowFlashLoanArbitrageStrategy.sol - References non-Flow protocols ❌
+
+🤔 CONDITIONAL (Depends on Flow Protocol Availability)
+
+FlowSturdyFinanceStrategy.sol - Keep if Sturdy.Finance actually exists on Flow
+FlowDeltaNeutralStrategy.sol - Keep if Flow has derivatives protocols
+FlowAIPredictiveStrategy.sol - Keep if you can implement AI oracles
+FlowYieldLotteryGamificationStrategy.sol - Innovative but complex
+FlowGovernanceFarmingStrategy.sol - Valuable if governance tokens have yield
+
+
+
 Research Cadance and where the use is
 
 Yeild Raffle Module OR Normal Yield Investment Module!
@@ -159,6 +187,28 @@ Performance-based fee structure only
 Buy-back and burn mechanics for token value accrual
 
 
+
+# Defi Protocols on Flow:
+
+
+
+IncrementFi
+Flowty
+BloctoSwap
+Celer Network - Enables cross-chain interoperability, connecting Flow with other blockchains. so maybe incorperate strategies from etherlink euler etc.?
+Trado.one
+
+KittyPunch / PunchSwap – A DEX deployed via Cadence on Flow mainnet.
+
+Trado.one – A permissionless DEX.
+
+More.Markets – A lending/borrowing protocol.
+
+Sturdy.Finance – Interest-free borrowing protocol.
+
+Ankr Staking – Liquid staking provider on Flow.
+
+Sudocat, Hitdex, and others – Tools for trading, analytics, and portfolio management.
 
 
 ### Exploring

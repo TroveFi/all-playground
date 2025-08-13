@@ -1,3 +1,11 @@
+my main concern is that with current architecture: not much reason for repeat users? not enough winners if only 1 per week or month...
+
+Additions:
+
+ADD WAY TO CLAIM DEPOSIT BACK AND YIELD BACK AND ALSO WAY TO GET EMAIL NOTIFICATIONS!!
+
+ADD REFERRAL SYSTEM
+
 Working on Contracts Notes:
 X
 Y
