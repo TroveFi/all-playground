@@ -25,6 +25,115 @@ FlowYieldLotteryGamificationStrategy.sol - Innovative but complex
 FlowGovernanceFarmingStrategy.sol - Valuable if governance tokens have yield
 
 
+🔥 CRITICAL - DEFINITELY EXIST (Get These First)
+Core Flow DeFi Protocols
+solidity// IncrementFi (Flow's main DEX)
+INCREMENTFI_ROUTER = address(?)      // IncrementFi router contract
+INCREMENTFI_FACTORY = address(?)     // IncrementFi factory contract
+
+// More.Markets (Flow lending protocol)  
+MORE_MARKETS_POOL = address(?)       // More.Markets lending pool
+MORE_MARKETS_USDC_TOKEN = address(?) // mUSDC token address
+MORE_MARKETS_FLOW_TOKEN = address(?) // mFLOW token address
+
+// BloctoSwap (Popular Flow DEX)
+BLOCTO_ROUTER = address(?)           // BloctoSwap router
+BLOCTO_FACTORY = address(?)          // BloctoSwap factory
+Core Asset Tokens
+solidity// Essential tokens on Flow
+FLOW_TOKEN = address(?)              // Native FLOW token
+USDC_FLOW = address(?)               // USDC on Flow  
+USDT_FLOW = address(?)               // USDT on Flow
+WETH_FLOW = address(?)               // Wrapped ETH on Flow (if exists)
+NFT Ecosystem
+solidity// Flowty (Main Flow NFT marketplace)
+FLOWTY_MARKETPLACE = address(?)      // Flowty marketplace contract
+
+// Major Flow NFT collections
+NBA_TOPSHOT_CONTRACT = address(?)    // NBA Top Shot NFTs
+NFL_ALLDAY_CONTRACT = address(?)     // NFL All Day NFTs
+Staking & Validators
+solidity// Ankr Liquid Staking
+ANKR_STAKING = address(?)            // Ankr staking contract on Flow
+ANKR_FLOW_TOKEN = address(?)         // ankrFLOW liquid staking token
+
+// Flow Native Staking
+FLOW_STAKING_CONTRACT = address(?)   // Official Flow staking
+FLOW_EPOCH_REWARDS = address(?)      // Validator delegation contract
+Cross-Chain Bridges
+solidity// Celer Network
+CELER_BRIDGE_FLOW = address(?)       // Celer bridge on Flow
+
+// Official Flow Bridge  
+FLOW_BRIDGE_NATIVE = address(?)      // Official Flow <-> Ethereum bridge
+🟡 IMPORTANT - PROBABLY EXIST (Research These)
+Additional DEXs
+solidity// Other Flow DEXs (verify they exist)
+PUNCH_ROUTER = address(?)            // PunchSwap router (if exists)
+TRADO_ROUTER = address(?)            // Trado.one router (if exists)
+Advanced Bridges
+solidity// deBridge (check if they support Flow)
+DEBRIDGE_FLOW = address(?)           // deBridge on Flow
+
+// Axelar (check if they support Flow)  
+AXELAR_GATEWAY_FLOW = address(?)     // Axelar gateway
+
+// Relay Bridge (check if they support Flow)
+RELAY_BRIDGE_FLOW = address(?)       // Relay bridge
+🔍 RESEARCH NEEDED (Might Not Exist Yet)
+Advanced DeFi Primitives
+solidity// Concentrated Liquidity (like Uniswap V3)
+FLOW_CONCENTRATED_POOL_FACTORY = address(?) // Might not exist yet
+FLOW_POSITION_MANAGER = address(?)          // Might not exist yet
+
+// NFT Finance
+NFT_STAKING_CONTRACT = address(?)           // NFT staking (might not exist)
+NFT_LENDING_CONTRACT = address(?)           // NFT lending (might not exist)
+
+// MEV Infrastructure  
+MEV_EXTRACTION_CONTRACT = address(?)        // Probably doesn't exist
+BLOCK_PRODUCTION_CONTRACT = address(?)      // Probably doesn't exist
+Governance & Advanced Features
+solidity// Protocol Governance
+INCREMENTFI_DAO = address(?)         // IncrementFi governance (if exists)
+MOREMARKET_DAO = address(?)          // More.Markets governance (if exists)  
+FLOW_GOVERNANCE_DAO = address(?)     // Flow DAO (if exists)
+
+// Advanced Flow Features
+FLOW_ACCOUNT_MODEL = address(?)      // Account abstraction (research needed)
+CADENCE_INTEGRATION = address(?)     // Cadence integration (research needed)
+FLOW_PROTOCOL_AGGREGATOR = address(?) // Protocol aggregator (probably custom)
+📋 WHERE TO FIND THESE ADDRESSES
+Definite Sources:
+
+IncrementFi: Check their docs/GitHub
+More.Markets: Check their documentation
+BloctoSwap: Check Blocto's documentation
+Flowty: Check their marketplace docs
+NBA Top Shot/NFL All Day: Check Flow's official docs
+Ankr: Check Ankr's Flow staking page
+Flow Bridge: Check Flow's official bridge documentation
+Celer: Check Celer's supported networks page
+
+Research Sources:
+
+Flow Block Explorer: https://flowscan.org
+Flow Documentation: https://developers.flow.com
+Flow Port: https://port.onflow.org (DeFi aggregator)
+DeFiLlama: Check Flow protocols
+Flow Community: Discord/Twitter for lesser-known protocols
+
+Token Addresses:
+
+Check Flow Port for verified token contracts
+Use Flowscan to verify contract addresses
+Check each protocol's documentation for their token addresses
+
+🎯 IMPLEMENTATION STRATEGY
+Phase 1: Get the CRITICAL addresses and deploy core strategies
+Phase 2: Research and add IMPORTANT protocols
+Phase 3: Build custom RESEARCH NEEDED components if they don't exist
+
 
 Research Cadance and where the use is
 

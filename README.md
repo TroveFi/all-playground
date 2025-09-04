@@ -1,3 +1,6 @@
+1 WINNER -> ALLOW PEOPLE TO CHOOSE THEIR OWN ODDS SO THEY CAN CHOOSE TO WIN AS BIG AS THEY WANT, OR JUST STAKE THEIR WITH SECURED GAINS SO EVERYONE HAS THEIR OWN VRF CASHOUT
+
+
 my main concern is that with current architecture: not much reason for repeat users? not enough winners if only 1 per week or month...
 
 Additions:
