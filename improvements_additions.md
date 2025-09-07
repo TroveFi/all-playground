@@ -1,4 +1,9 @@
 NOW:
+
+
+NEED TO SUPPORT:
+FLOW, USDC, USDT, WETH
+
 🟡 MODIFY/REPLACE
 Bridge Replacement (as you noted):
 
