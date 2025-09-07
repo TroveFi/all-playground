@@ -287,3 +287,60 @@ Account balance: 2.8804066813 FLOW
 
     Attempt 1/3 for Grant vault role to lottery system...
     ✅ Grant vault role to lottery system completed successfully
+
+
+
+
+    # NEWEST:
+
+🏗️  STEP 1: DEPLOYING CORE INFRASTRUCTURE
+==========================================
+1. Deploying SimplePriceOracle...
+✅ SimplePriceOracle: 0x777C515eDAC5D3c5019408DD483f6eD197bd3c0e
+
+2. Deploying TrueMultiAssetVault...
+✅ TrueMultiAssetVault: 0x32607bcA2a2F0f8Fc14ab05781a487adAB6d45A4
+
+3. Deploying MultiAssetStrategyManager...
+✅ MultiAssetStrategyManager: 0xf4b25F941e59df707CD903F8b5b579c9fB959f4D
+
+4. Deploying LotteryManager...
+✅ LotteryManager: 0x879ac7b36FE027fE98883bcCFd309A6c3064B9e0
+
+5. Deploying RiskManager...
+✅ RiskManager: 0xAAa7b4d344061Ebc1996CEE28d1097aaE7E47576
+
+🔗 STEP 2: CONNECTING INFRASTRUCTURE TO VAULT
+==============================================
+Setting StrategyManager on vault...
+✅ StrategyManager connected
+Setting LotteryManager on vault...
+✅ LotteryManager connected
+Setting RiskManager on vault...
+✅ RiskManager connected
+✅ Price updater role granted
+
+⚡ STEP 3: DEPLOYING UPDATED STRATEGIES
+======================================
+1. Deploying AnkrStakingStrategy...
+✅ AnkrStakingStrategy: 0xad582458E86B256016c79aC86ef76C1768E82E28
+
+2. Deploying MoreMarketsStrategy...
+✅ MoreMarketsStrategy: 0xc36BB4e16a21F11F3f33E056E8c2F77AaAEa4c19
+
+3. Deploying MinimalArbitrageStrategy...
+✅ MinimalArbitrageStrategy: 0x9B9200084b3d679A1080AD5eBBC262e9Ff84b2a0
+
+4. Deploying MoreMarketsLoopingStrategy...
+✅ MoreMarketsLoopingStrategy: 0xA6E703d9B684B4b124dDADdBbA35D7FDC1305Ba0
+
+📝 STEP 4: REGISTERING STRATEGIES
+=================================
+Registering AnkrStakingStrategy...
+✅ AnkrStakingStrategy registered
+Registering MoreMarketsStrategy...
+✅ MoreMarketsStrategy registered
+Registering ArbitrageStrategy...
+✅ ArbitrageStrategy registered
+Registering LoopingStrategy...
+✅ LoopingStrategy registered
