@@ -344,3 +344,18 @@ Registering ArbitrageStrategy...
 ✅ ArbitrageStrategy registered
 Registering LoopingStrategy...
 ✅ LoopingStrategy registered
+
+
+
+NEW NEWEST:
+📋 DEPLOYED CONTRACT ADDRESSES:
+===============================
+priceOracle         : 0x6ceAfE90D0804c0736252aE1ac2AC3883F10fd5C
+vault               : 0x801aaAa568B519EdE5DB39EA1b6Af287631f7Fdb
+strategyManager     : 0x5A7F59b5B987Ba7022DF7Cc438be17C52683b12a
+lotteryManager      : 0x530050F3E471e750FA611581074F48B7333EB9AB
+riskManager         : 0x8c8d87cbE4A2273C4450a80DAc6a8DDc6eF030dF
+ankrStrategy        : 0xD612C7c84b3F37c84c5eBfe81D110FE231C6bD6f
+moreMarketsStrategy : 0xcbFd08923dC3cb5E63084d31B486462Ec41ab560
+arbitrageStrategy   : 0x552DC31602284878b90Ff2c09Ae4f33403F9AcD7
+loopingStrategy     : 0x1A029BCD103447205c2365CE969540bE7E4B9120
