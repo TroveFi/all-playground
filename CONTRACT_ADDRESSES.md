@@ -359,3 +359,35 @@ ankrStrategy        : 0xD612C7c84b3F37c84c5eBfe81D110FE231C6bD6f
 moreMarketsStrategy : 0xcbFd08923dC3cb5E63084d31B486462Ec41ab560
 arbitrageStrategy   : 0x552DC31602284878b90Ff2c09Ae4f33403F9AcD7
 loopingStrategy     : 0x1A029BCD103447205c2365CE969540bE7E4B9120
+
+ANKR expects native flow not WFLOW
+
+So configure ankr strategy to accept WFLOW and FLOW and have it unwrap any WFLOW before staking to get ankrFLOW
+
+📋 DEPLOYED CONTRACT ADDRESSES:
+===============================
+priceOracle         : 0xB3604cB896a70439EB3EfD8FaDC9bCcF0864520d
+vault               : 0xfFb4Ec735054a05f0cf08171C1B34C06Bb58064a
+strategyManager     : 0xCB4978681Dcb44c05D82807c2FF4Ac1B472fb721
+lotteryManager      : 0x352f6A249Ce750E87871BF33C8d0465aB72BBaf9
+riskManager         : 0xb9edb38C0f8F85dA302aa8898C6e0a7EcDC42c61
+ankrStrategy        : 0xFA7489D42655C6d1ECf8cDb20ff8e4be148bd618
+moreMarketsStrategy : 0x308955865b00277c5144EB02E47D45A9be7C1884
+arbitrageStrategy   : 0xcBFd2bC061cB6699119a98e9E2Be4b66969aeAf3
+loopingStrategy     : 0x52dAdEE3181CFB5aB1Bb0AC6aB080c63271FC50e
+
+📋 DEPLOYED CONTRACT ADDRESSES:
+===============================
+priceOracle         : 0xb7E587bC227b0b36644a1503D02f6955c884e922
+vault               : 0xF670C5F28cFA8fd7Ed16AaE81aA9AF2b304F0b4B
+strategyManager     : 0x65c1014550EC6D452cF21178309Ab4ABF321e4a3
+lotteryManager      : 0xd932ab3c0A9606bC3cFD7E39FC459F1C3D0f4Af4
+riskManager         : 0x646EfaE090A23E5D964c0f32051e12BE0e94CE8C
+ankrStrategy        : 0xa875f54B1f4f8E7d403a1e6b327b01bd2FE310d3
+moreMarketsStrategy : 0x508FfC67d0a6aD38d1B76b2c0d9E76EE09fB53d1
+arbitrageStrategy   : 0xb6b01c1E6Edc9Bdf471459705EA0c58C54F58b2f
+loopingStrategy     : 0xC14728c8CC4c9a76B0cDBee3305ab33D7dc0e5CE
+MODIFY RISK TO STOP PREVENTING DEPOSITS!
+PP — 08:01
+ANKR STAKING updated:
+0xab1af8fe89061A583f1B161394C34668072CD69f
