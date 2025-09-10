@@ -8,3 +8,9 @@ TroveFi is an agentic, no-loss yield system that swaps drip interest for jackpot
 TroveFi is an agentic, no-loss agentic yield system that swaps drip interest for jackpot chances.
 
 An agentic, no-loss yield raffle where your yield becomes frequent jackpot entries, driven by an ML-powered allocator that diversifies and optimises across strategies to grow the prize pot.
+
+
+A no-loss yield lottery dapp powered by a yield farming agent that exchanges the traditional small gains of yield with a way to chase big wins.
+
+
+a yield farming agent that grows the prize pot.

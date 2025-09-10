@@ -391,3 +391,129 @@ MODIFY RISK TO STOP PREVENTING DEPOSITS!
 PP — 08:01
 ANKR STAKING updated:
 0xab1af8fe89061A583f1B161394C34668072CD69f
+
+
+
+REFACTORED EPOCH SYSTEM DEPLOYMENT
+==================================
+Deploying with account: 0xbaD4374FeB7ec757027CF2186B6eb6f32412f723
+Account balance: 11.5157598242 FLOW
+
+🏗️  STEP 1: DEPLOYING CORE VAULT
+===============================
+Deploying TrueMultiAssetVaultCore...
+✅ Core Vault deployed: 0xbD82c706e3632972A00E288a54Ea50c958b865b2
+
+🏗️  STEP 2: DEPLOYING VAULT EXTENSION
+====================================
+Deploying VaultExtension...
+✅ VaultExtension deployed: 0xBaF543b07e01F0Ed02dFEa5dfbAd38167AC9be57
+
+🔗 STEP 3: CONNECTING VAULT TO EXTENSION
+========================================
+Setting VaultExtension on core vault...
+✅ VaultExtension connected to core vault
+
+🏗️  STEP 4: DEPLOYING FRONTEND HELPER
+====================================
+Deploying VaultFrontendHelper...
+✅ VaultFrontendHelper deployed: 0x79dd832b6cCe9DB201cDb18FbeD65a333354e031
+
+🔗 STEP 5: CONNECTING EXISTING INFRASTRUCTURE
+=============================================
+Setting StrategyManager on core vault...
+✅ StrategyManager connected
+Setting RiskManager on core vault...
+✅ RiskManager connected
+
+🔑 STEP 6: GRANTING ROLES
+=========================
+✅ VAULT_ROLE granted to core vault in VaultExtension
+✅ YIELD_MANAGER_ROLE granted to deployer
+✅ ADMIN_ROLE granted to deployer
+Updating VAULT_ROLE in existing StrategyManager...
+✅ VAULT_ROLE granted to new vault in StrategyManager
+
+📊 STEP 7: CONFIGURING SUPPORTED ASSETS
+=======================================
+✅ USDF already configured
+✅ WFLOW already configured
+✅ WETH added to VaultExtension
+✅ STGUSD added to VaultExtension
+✅ USDT added to VaultExtension
+✅ USDC_E added to VaultExtension
+✅ STFLOW added to VaultExtension
+✅ ANKRFLOW added to VaultExtension
+✅ CBBTC added to VaultExtension
+✅ NATIVE_FLOW already configured
+
+🧪 STEP 8: TESTING EPOCH SYSTEM
+===============================
+Current epoch status:
+  Epoch Number: 1
+  Time Remaining: 604704 seconds
+  Yield Pool: 0.0
+  Participants: 0
+
+Subsidizing test yield (1000 USDF equivalent)...
+✅ Test yield subsidized
+New yield pool: 1000.0
+
+💰 STEP 9: TESTING RISK-LEVEL DEPOSITS
+======================================
+
+Testing USDF deposit with MEDIUM risk...
+Balance: 31.7817 USDF
+✅ USDF deposit successful!
+   Amount: 3.17817 USDF
+   Gas used: 563928
+   Risk Level: HIGH
+   Total Deposited: 3.17817 USDF
+
+🎯 STEP 10: TESTING RISK LEVEL UPDATE
+====================================
+Current risk level: HIGH
+Updating to HIGH risk...
+New risk level: HIGH
+✅ Risk level update successful!
+
+🔍 STEP 11: SYSTEM VERIFICATION
+===============================
+Core vault connections:
+  StrategyManager: ✅
+  RiskManager: ✅
+  PriceOracle: ✅
+  VaultExtension: ✅
+
+Core vault metrics:
+  Total Value Locked: 3178170000000.0
+  Total Users: 1
+  Total Principal: 3.17817
+  Total Yield Generated: 0.0
+  Total Yield Distributed: 0.0
+
+VaultExtension epoch status:
+  Current Epoch: 1
+  Yield Pool: 1000.0
+  Participants: 0
+
+🎉 REFACTORED EPOCH SYSTEM DEPLOYMENT SUCCESSFUL!
+=================================================
+
+📋 NEW CONTRACT ADDRESSES:
+==========================
+coreVault: 0xbD82c706e3632972A00E288a54Ea50c958b865b2
+vaultExtension: 0xBaF543b07e01F0Ed02dFEa5dfbAd38167AC9be57
+frontendHelper: 0x79dd832b6cCe9DB201cDb18FbeD65a333354e031
+
+📋 EXISTING CONTRACT ADDRESSES (REUSED):
+========================================
+priceOracle: 0xb7E587bC227b0b36644a1503D02f6955c884e922
+vault: 0xF670C5F28cFA8fd7Ed16AaE81aA9AF2b304F0b4B
+strategyManager: 0x65c1014550EC6D452cF21178309Ab4ABF321e4a3
+lotteryManager: 0xd932ab3c0A9606bC3cFD7E39FC459F1C3D0f4Af4
+riskManager: 0x646EfaE090A23E5D964c0f32051e12BE0e94CE8C
+ankrStrategy: 0xab1af8fe89061A583f1B161394C34668072CD69f
+moreMarketsStrategy: 0x508FfC67d0a6aD38d1B76b2c0d9E76EE09fB53d1
+arbitrageStrategy: 0xb6b01c1E6Edc9Bdf471459705EA0c58C54F58b2f
+loopingStrategy: 0xC14728c8CC4c9a76B0cDBee3305ab33D7dc0e5CE
