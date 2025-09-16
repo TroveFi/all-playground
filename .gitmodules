@@ -1,3 +1,6 @@
 [submodule "dApp/TroveFi_dApp1"]
 	path = dApp/TroveFi_dApp1
 	url = https://github.com/PhatDot1/TroveFi_dApp
+[submodule "prelaunch_app/TroveFi_PreLaunch_App"]
+	path = prelaunch_app/TroveFi_PreLaunch_App
+	url = https://github.com/PhatDot1/TroveFi_PreLaunch_App
