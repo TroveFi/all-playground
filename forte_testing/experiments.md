@@ -57,3 +57,18 @@ sloppy inheretance bs
 
 Taking advantage of:
 pay gas upfront and have guaranteed future execution without any external dependency so now dont need centralized infra for these setups
+
+
+# LOOPING
+Current Looping Challenges:
+
+Manual monitoring of liquidation ratios
+Manual rebalancing when positions drift
+Gas costs for frequent adjustments
+Timing risks during market volatility
+
+Native Flow looping 
+
+borrow stETH against ETH
+
+Flow for automation logic, bridge to other chains for yields
