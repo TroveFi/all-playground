@@ -34,3 +34,10 @@ access(all) fun main(
     out["okBoth"]           = ((baseAge <= staleThreshold) && (quoteAge <= staleThreshold)) ? "true" : "false"
     return out
 }
+
+
+// MAINNET -> USAGE: flow scripts execute cadence/scripts/read_band_reference_data_mainnet.cdc \      
+//  "ETH" "USD" 1800.0 \      
+//  --network mainnet
+
+// same as before but with 1800s staleness window
