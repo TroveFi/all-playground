@@ -1,39 +1,40 @@
-import UniswapV2Connectors from 0xfef8e4c5c16ccda5
+import UniswapV2SwapConnectors from 0xfef8e4c5c16ccda5
+import EVM from 0x8c5303eaa26202d6
 import DeFiActions from 0x4c2ff9dd03ab442f
+import FlowToken from 0x7e60df042a9c0868
 
-// Script to get UniswapV2 quote on Flow EVM (read-only, no state change)
-access(all) fun main(tokenInAddress: String, tokenOutAddress: String, amountIn: UFix64): {String: AnyStruct} {
-    log("Getting UniswapV2 quote on Flow EVM")
-    log("Token In Address: ".concat(tokenInAddress))
-    log("Token Out Address: ".concat(tokenOutAddress))
-    log("Amount In: ".concat(amountIn.toString()))
+// Script to explore UniswapV2 EVM connector capabilities
+access(all) fun main(routerAddressHex: String, tokenInAddressHex: String, tokenOutAddressHex: String): {String: AnyStruct} {
+    log("Exploring UniswapV2 EVM connector capabilities")
+    log("Router Address: ".concat(routerAddressHex))
+    log("Token In Address: ".concat(tokenInAddressHex))
+    log("Token Out Address: ".concat(tokenOutAddressHex))
     
-    let operationID = DeFiActions.createUniqueIdentifier()
+    // Convert hex strings to EVM addresses to validate format
+    let routerAddress = EVM.addressFromString(routerAddressHex)
+    let tokenInAddress = EVM.addressFromString(tokenInAddressHex)
+    let tokenOutAddress = EVM.addressFromString(tokenOutAddressHex)
     
-    // Create UniswapV2 swapper for EVM pair
-    let swapper = UniswapV2Connectors.UniswapV2Swapper(
-        tokenInAddress: tokenInAddress,   // EVM_TOKEN_IN_ADDRESS placeholder
-        tokenOutAddress: tokenOutAddress, // EVM_TOKEN_OUT_ADDRESS placeholder
-        pairAddress: "0x1234567890abcdef1234567890abcdef12345678", // EVM_PAIR_ADDRESS placeholder
-        uniqueID: operationID
-    )
-    
-    // Get quote for swap amount
-    let quote = swapper.quote(input: amountIn)
+    // Create a simple swap path
+    let swapPath: [EVM.EVMAddress] = [tokenInAddress, tokenOutAddress]
     
     let result: {String: AnyStruct} = {
-        "tokenInAddress": tokenInAddress,
-        "tokenOutAddress": tokenOutAddress,
-        "amountIn": amountIn,
-        "expectedAmountOut": quote.output,
-        "priceImpact": quote.priceImpact,
-        "exchangeRate": quote.output / amountIn,
+        "routerAddressHex": routerAddressHex,
+        "tokenInAddressHex": tokenInAddressHex,
+        "tokenOutAddressHex": tokenOutAddressHex,
+        "routerEVMAddress": routerAddress.toString(),
+        "tokenInEVMAddress": tokenInAddress.toString(),
+        "tokenOutEVMAddress": tokenOutAddress.toString(),
+        "swapPathLength": swapPath.length,
+        "contractAvailable": true,
+        "note": "UniswapV2SwapConnectors.Swapper requires COA capability - cannot create actual swapper in script context",
         "timestamp": getCurrentBlock().timestamp,
         "source": "UniswapV2_FlowEVM"
     }
     
-    log("Expected amount out: ".concat(quote.output.toString()))
-    log("Price impact: ".concat(quote.priceImpact.toString()).concat("%"))
+    log("Contract import successful")
+    log("EVM address conversion successful")
+    log("Path length: ".concat(swapPath.length.toString()))
     
     return result
 }
