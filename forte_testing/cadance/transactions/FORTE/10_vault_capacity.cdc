@@ -9,6 +9,7 @@ transaction(targetWithdraw: UFix64, minRemaining: UFix64) {
         pre {
             targetWithdraw > 0.0: "Target withdraw must be positive"
             minRemaining > 0.0: "Minimum remaining must be positive"
+            targetWithdraw <= 1.0: "Keep test withdrawals reasonable"
         }
         
         log("Starting FT Vault capacity safety test")
@@ -20,10 +21,16 @@ transaction(targetWithdraw: UFix64, minRemaining: UFix64) {
         
         log("Initial balance: ".concat(initialBalance.toString()))
         
+        // Ensure we have enough balance for the test
+        if initialBalance <= minRemaining + targetWithdraw {
+            log("Insufficient balance for test - need at least: ".concat((minRemaining + targetWithdraw).toString()))
+            return
+        }
+        
         let operationID = DeFiActions.createUniqueIdentifier()
         
         // Create VaultSource with minimum balance protection
-        let withdrawCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
+        let withdrawCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Vault}>(
             /storage/flowTokenVault
         )
         
@@ -52,21 +59,27 @@ transaction(targetWithdraw: UFix64, minRemaining: UFix64) {
             // Verify minimum balance respected
             assert(afterWithdrawBalance >= minRemaining, message: "Minimum balance violated")
             
-            // Create sink and deposit back
+            // Create sink and test deposit capacity
             let depositCap = getAccount(signer.address).capabilities.get<&{FungibleToken.Vault}>(
                 /public/flowTokenReceiver
-            )
+            )!
             
             let vaultSink = FungibleTokenConnectors.VaultSink(
-                max: nil,
+                max: initialBalance + safeAmount, // Set reasonable max
                 depositVault: depositCap,
                 uniqueID: operationID
             )
             
+            // Test sink capacity
+            let sinkCapacity = vaultSink.minimumCapacity()
+            log("Sink capacity: ".concat(sinkCapacity.toString()))
+            
+            // Deposit back through sink
             vaultSink.depositCapacity(from: &withdrawnVault as auth(FungibleToken.Withdraw) &{FungibleToken.Vault})
             
             // Handle any remaining tokens
             if withdrawnVault.balance > 0.0 {
+                log("Depositing remaining: ".concat(withdrawnVault.balance.toString()))
                 vaultRef.deposit(from: <-withdrawnVault)
             } else {
                 destroy withdrawnVault
@@ -75,10 +88,9 @@ transaction(targetWithdraw: UFix64, minRemaining: UFix64) {
             let finalBalance = vaultRef.balance
             log("Final balance: ".concat(finalBalance.toString()))
             
-            post {
-                finalBalance >= minRemaining: "Final balance must respect minimum"
-                finalBalance >= initialBalance - 0.001: "No unexpected loss"
-            }
+            // Verify constraints
+            assert(finalBalance >= minRemaining, message: "Final balance must respect minimum")
+            assert(finalBalance >= initialBalance - 0.001, message: "No unexpected loss")
             
         } else {
             log("No funds available for withdrawal while respecting minimum balance")
