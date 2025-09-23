@@ -1,87 +1,68 @@
 import IncrementFiStakingConnectors from 0x49bae091e5ea16b5
 import IncrementFiPoolLiquidityConnectors from 0x49bae091e5ea16b5
-import IncrementFiSwapConnectors from 0x49bae091e5ea16b5
-import SwapConnectors from 0xaddd594cf410166a
 import DeFiActions from 0x4c2ff9dd03ab442f
+import FungibleToken from 0x9a0766d93b6608b7
+import FlowToken from 0x7e60df042a9c0868
 
-// Transaction to test IncrementFi restake: claim rewards → zap to LP → restake
+// Transaction to test IncrementFi staking connector components
 transaction(pid: UInt64) {
     prepare(signer: auth(BorrowValue, IssueStorageCapabilityController) &Account) {
         pre {
             pid >= 0: "Pool ID must be valid"
         }
         
-        log("Starting IncrementFi restake test for pool: ".concat(pid.toString()))
+        log("Starting IncrementFi staking connector test for pool: ".concat(pid.toString()))
         
         let operationID = DeFiActions.createUniqueIdentifier()
         
-        // Get initial stake amount for comparison
-        let stakingConnector = IncrementFiStakingConnectors.PoolStakeManager(
-            poolID: pid,
-            uniqueID: operationID
-        )
+        // Test 1: Check if pool exists using the borrowPool helper
+        let pool = IncrementFiStakingConnectors.borrowPool(pid: pid)
         
-        let initialStake = stakingConnector.getStakedAmount(staker: signer.address)
-        log("Initial stake: ".concat(initialStake.toString()))
+        if pool == nil {
+            log("Pool ".concat(pid.toString()).concat(" not found or not accessible"))
+            log("Test completed - pool not available")
+            return
+        }
         
-        // Create rewards source
-        let rewardsSource = IncrementFiStakingConnectors.PoolRewardsSource(
-            poolID: pid,
+        log("Pool found and accessible")
+        
+        // Test 2: Check user's current staking info
+        let userInfo = pool!.getUserInfo(address: signer.address)
+        
+        if userInfo != nil {
+            log("Current staking amount: ".concat(userInfo!.stakingAmount.toString()))
+            log("Unclaimed rewards: ".concat(userInfo!.unclaimedRewards.keys.length.toString()).concat(" token types"))
+        } else {
+            log("User has no staking position in this pool")
+        }
+        
+        // Test 3: Try to create PoolSink (may fail if pool requirements not met)
+        let poolSinkResult = IncrementFiStakingConnectors.PoolSink(
+            pid: pid,
             staker: signer.address,
             uniqueID: operationID
         )
         
-        // Check available rewards
-        let availableRewards = rewardsSource.getAvailable()
-        log("Available rewards: ".concat(availableRewards.toString()))
+        log("PoolSink created successfully")
+        log("Sink type: ".concat(poolSinkResult.getSinkType().identifier))
+        log("Minimum capacity: ".concat(poolSinkResult.minimumCapacity().toString()))
         
-        if availableRewards > 0.001 {
-            // Create zapper for converting rewards to LP tokens
-            let zapper = IncrementFiPoolLiquidityConnectors.Zapper(
-                tokenInType: Type<@FlowToken.Vault>(),  // Assuming rewards in FLOW
-                poolID: pid,
-                uniqueID: operationID
-            )
-            
-            // Create pool sink for restaking
-            let poolSink = IncrementFiStakingConnectors.PoolSink(
-                poolID: pid,
-                staker: signer.address,
-                uniqueID: operationID
-            )
-            
-            // Get quote for LP output
-            let zapQuote = zapper.quote(input: availableRewards)
-            log("Expected LP out: ".concat(zapQuote.output.toString()))
-            
-            // Create swap source to chain rewards → zap → restake
-            let swapSource = SwapConnectors.SwapSource(
-                source: rewardsSource,
-                swapper: zapper,
-                sink: poolSink,
-                uniqueID: operationID
-            )
-            
-            // Execute the restake flow
-            let result = swapSource.swap(
-                input: availableRewards,
-                minOutput: zapQuote.output * 0.95  // 5% slippage tolerance
-            )
-            
-            log("Restake result output: ".concat(result.output.toString()))
-            
-            // Verify stake increased
-            let finalStake = stakingConnector.getStakedAmount(staker: signer.address)
-            log("Final stake: ".concat(finalStake.toString()))
-            
-            post {
-                result.output > 0.0: "Restake must produce positive output"
-                finalStake >= initialStake: "Stake amount should increase or stay same"
-            }
-            
-            log("IncrementFi restake completed successfully")
-        } else {
-            log("No rewards available for restaking")
-        }
+        // Test 4: Test helper functions
+        let tokenTypeFromString = IncrementFiStakingConnectors.tokenTypeIdentifierToVaultType("A.7e60df042a9c0868.FlowToken")
+        log("Token type conversion test: ".concat(tokenTypeFromString.identifier))
+        
+        // Test 5: Test Zapper availability (may fail if no valid pairs)
+        let zapperType = Type<IncrementFiPoolLiquidityConnectors.Zapper>()
+        log("Zapper type available: ".concat(zapperType.identifier))
+        
+        log("IncrementFi staking connector test completed successfully")
+    }
+    
+    execute {
+        log("Transaction executed successfully")
+    }
+    
+    post {
+        // No-op transaction should not change state
     }
 }

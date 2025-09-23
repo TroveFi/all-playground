@@ -16,8 +16,8 @@ transaction(amount: UFix64) {
         // Create unique identifier for tracking
         let operationID = DeFiActions.createUniqueIdentifier()
         
-        // Create VaultSource
-        let withdrawCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
+        // Create VaultSource with correct capability type
+        let withdrawCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Vault}>(
             /storage/flowTokenVault
         )
         
