@@ -1,0 +1,270 @@
+2025-09-17 11:00:24,580 - INFO - ============================================================
+2025-09-17 11:00:24,581 - INFO - STARTING LP FARMING COMPREHENSIVE TEST
+2025-09-17 11:00:24,581 - INFO - Capital: 2.0 FLOW
+2025-09-17 11:00:24,581 - INFO - Paper Trading: False
+2025-09-17 11:00:24,581 - INFO - User Address: 0x79f5b5b0f95a160b
+2025-09-17 11:00:24,581 - INFO - ============================================================
+2025-09-17 11:00:24,581 - INFO - 
+--- TEST 1: Pool Discovery ---
+2025-09-17 11:00:24,581 - INFO - Executing script: cadence/scripts/get-increment-pools.cdc with args: None
+2025-09-17 11:00:25,228 - WARNING - No pools found - check script execution
+2025-09-17 11:00:25,228 - INFO - 
+--- TEST 2: Allocation Calculation ---
+2025-09-17 11:00:25,228 - ERROR - No pools available for allocation test
+2025-09-17 11:00:25,228 - INFO - 
+--- TEST 3: Position Checking ---
+2025-09-17 11:00:25,229 - INFO - Executing script: cadence/scripts/get-user-lp-positions.cdc with args: ['0x79f5b5b0f95a160b']
+2025-09-17 11:00:25,494 - ERROR - Script execution failed: ❌ Command Error: error loading script file: open cadence/scripts/get-user-lp-positions.cdc: no such file or directory
+2025-09-17 11:00:25,494 - INFO - Current Positions: 0
+2025-09-17 11:00:25,494 - INFO -   No current positions found
+2025-09-17 11:00:25,494 - INFO - ✓ Position checking test completed successfully
+2025-09-17 11:00:25,494 - INFO - 
+--- TEST 4: Transaction Simulation ---
+2025-09-17 11:00:25,494 - WARNING - No allocation to simulate transactions
+2025-09-17 11:00:25,494 - INFO - 
+--- TEST 5: Performance Analysis ---
+2025-09-17 11:00:25,494 - WARNING - No allocation for performance analysis
+2025-09-17 11:00:25,494 - INFO - 
+============================================================
+2025-09-17 11:00:25,494 - INFO - TEST REPORT
+2025-09-17 11:00:25,494 - INFO - ============================================================
+2025-09-17 11:00:25,495 - INFO - Test Duration: 0:00:00.914285
+2025-09-17 11:00:25,495 - INFO - Opportunities Found: 0
+2025-09-17 11:00:25,495 - INFO - Allocations Calculated: 0
+2025-09-17 11:00:25,495 - INFO - Transactions Simulated: 0
+2025-09-17 11:00:25,495 - INFO - Errors Encountered: 0
+2025-09-17 11:00:25,495 - INFO - 
+✅ ALL TESTS PASSED SUCCESSFULLY!
+2025-09-17 11:00:25,495 - INFO - ============================================================
+2025-09-17 11:24:24,965 - INFO - ============================================================
+2025-09-17 11:24:24,965 - INFO - STARTING LP FARMING COMPREHENSIVE TEST
+2025-09-17 11:24:24,965 - INFO - Capital: 2.0 FLOW
+2025-09-17 11:24:24,966 - INFO - Paper Trading: False
+2025-09-17 11:24:24,966 - INFO - User Address: 0x79f5b5b0f95a160b
+2025-09-17 11:24:24,966 - INFO - ============================================================
+2025-09-17 11:24:24,966 - INFO - 
+--- TEST 1: Pool Discovery ---
+2025-09-17 11:24:24,966 - INFO - Executing script: cadence/scripts/get-increment-pools.cdc with args: None
+2025-09-17 11:24:25,480 - WARNING - No pools found - check script execution
+2025-09-17 11:24:25,480 - INFO - 
+--- TEST 2: Allocation Calculation ---
+2025-09-17 11:24:25,480 - ERROR - No pools available for allocation test
+2025-09-17 11:24:25,480 - INFO - 
+--- TEST 3: Position Checking ---
+2025-09-17 11:24:25,481 - INFO - Executing script: cadence/scripts/get-user-lp-positions.cdc with args: ['0x79f5b5b0f95a160b']
+2025-09-17 11:24:25,875 - INFO - Current Positions: 0
+2025-09-17 11:24:25,875 - INFO -   No current positions found
+2025-09-17 11:24:25,875 - INFO - ✓ Position checking test completed successfully
+2025-09-17 11:24:25,875 - INFO - 
+--- TEST 4: Transaction Simulation ---
+2025-09-17 11:24:25,875 - WARNING - No allocation to simulate transactions
+2025-09-17 11:24:25,875 - INFO - 
+--- TEST 5: Performance Analysis ---
+2025-09-17 11:24:25,875 - WARNING - No allocation for performance analysis
+2025-09-17 11:24:25,875 - INFO - 
+============================================================
+2025-09-17 11:24:25,875 - INFO - TEST REPORT
+2025-09-17 11:24:25,875 - INFO - ============================================================
+2025-09-17 11:24:25,875 - INFO - Test Duration: 0:00:00.910976
+2025-09-17 11:24:25,875 - INFO - Opportunities Found: 0
+2025-09-17 11:24:25,875 - INFO - Allocations Calculated: 0
+2025-09-17 11:24:25,876 - INFO - Transactions Simulated: 0
+2025-09-17 11:24:25,876 - INFO - Errors Encountered: 0
+2025-09-17 11:24:25,876 - INFO - 
+✅ ALL TESTS PASSED SUCCESSFULLY!
+2025-09-17 11:24:25,876 - INFO - ============================================================
+2025-09-17 11:40:47,582 - INFO - ============================================================
+2025-09-17 11:40:47,583 - INFO - FIXED LP FARMING COMPREHENSIVE TEST
+2025-09-17 11:40:47,583 - INFO - Capital: 2.0 FLOW
+2025-09-17 11:40:47,583 - INFO - Paper Trading: False
+2025-09-17 11:40:47,587 - INFO - User Address: 0x79f5b5b0f95a160b
+2025-09-17 11:40:47,588 - INFO - ============================================================
+2025-09-17 11:40:47,590 - INFO - 
+--- POOL DISCOVERY TEST ---
+2025-09-17 11:40:47,590 - INFO - Executing script: cadence/scripts/get-increment-pools.cdc
+2025-09-17 11:40:48,219 - INFO - Successfully discovered 20 pools
+2025-09-17 11:40:48,220 - INFO - Updated token prices
+2025-09-17 11:40:48,220 - INFO - 
+Top 10 Viable Opportunities:
+2025-09-17 11:40:48,220 - INFO - ------------------------------------------------------------------------------------------
+2025-09-17 11:40:48,220 - INFO -  1. Pool  0 | FLOW-USDC     | APY:  2000.00% | TVL:     130.14 | IL Risk:  40.0% | Capacity: 184467440607
+2025-09-17 11:40:48,220 - INFO -  2. Pool  1 | FLOW-USDC     | APY:  2000.00% | TVL:     202.90 | IL Risk:  40.0% | Capacity: 184467440534
+2025-09-17 11:40:48,220 - INFO -  3. Pool  2 | FLOW-USDC     | APY:  2000.00% | TVL:     166.94 | IL Risk:  40.0% | Capacity: 184467440570
+2025-09-17 11:40:48,220 - INFO -  4. Pool  3 | FLOW-stFLOW   | APY:  2000.00% | TVL:      39.42 | IL Risk:  10.0% | Capacity: 184467440698
+2025-09-17 11:40:48,221 - INFO -  5. Pool  4 | FLOW-USDC     | APY:  2000.00% | TVL:      14.44 | IL Risk:  40.0% | Capacity: 184467440723
+2025-09-17 11:40:48,221 - INFO -  6. Pool  5 | SDM-FLOW     | APY:  2000.00% | TVL:   21547.74 | IL Risk:  75.0% | Capacity: 184467419189
+2025-09-17 11:40:48,221 - INFO -  7. Pool  6 | FLOW-stFLOW   | APY:  2000.00% | TVL:     201.29 | IL Risk:  10.0% | Capacity: 184467440536
+2025-09-17 11:40:48,221 - INFO -  8. Pool  7 | FLOW-USDC     | APY:  2000.00% | TVL:      44.01 | IL Risk:  40.0% | Capacity: 184467440693
+2025-09-17 11:40:48,221 - INFO -  9. Pool  8 | FLOW-USDC     | APY:  2000.00% | TVL:     588.89 | IL Risk:  40.0% | Capacity: 184467440148
+2025-09-17 11:40:48,221 - INFO - 10. Pool  9 | FLOW-stFLOW   | APY:  2000.00% | TVL:       5.50 | IL Risk:  10.0% | Capacity: 184467440732
+2025-09-17 11:40:48,221 - INFO - 
+--- ALLOCATION CALCULATION TEST ---
+2025-09-17 11:40:48,233 - INFO - 
+Optimal Allocation for 2.0 FLOW:
+2025-09-17 11:40:48,233 - INFO - ----------------------------------------------------------------------
+2025-09-17 11:40:48,234 - INFO - Pool 18: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 11:40:48,234 - INFO - Pool  3: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 11:40:48,234 - INFO - ----------------------------------------------------------------------
+2025-09-17 11:40:48,234 - INFO - Total Allocated: 2.0000 FLOW (100.0%)
+2025-09-17 11:40:48,234 - INFO - Portfolio APY: 2000.00%
+2025-09-17 11:40:48,234 - INFO - 
+--- TRANSACTION SIMULATION TEST ---
+2025-09-17 11:40:48,234 - INFO - Sending real transaction: cadence/transactions/stake-lp-in-farm.cdc
+2025-09-17 11:40:48,457 - ERROR - Transaction failed: ❌ Command Error: error loading transaction file: open cadence/transactions/stake-lp-in-farm.cdc: no such file or directory
+2025-09-17 11:40:48,458 - ERROR - Test failed: Command '['flow', 'transactions', 'send', 'cadence/transactions/stake-lp-in-farm.cdc', '--network=mainnet', '--signer=0x79f5b5b0f95a160b', '18', '1.0']' returned non-zero exit status 1.
+2025-09-17 11:46:17,361 - INFO - ============================================================
+2025-09-17 11:46:17,362 - INFO - FIXED LP FARMING COMPREHENSIVE TEST
+2025-09-17 11:46:17,362 - INFO - Capital: 2.0 FLOW
+2025-09-17 11:46:17,362 - INFO - Paper Trading: False
+2025-09-17 11:46:17,362 - INFO - User Address: 0x79f5b5b0f95a160b
+2025-09-17 11:46:17,362 - INFO - ============================================================
+2025-09-17 11:46:17,362 - INFO - 
+--- POOL DISCOVERY TEST ---
+2025-09-17 11:46:17,362 - INFO - Executing script: cadence/scripts/get-increment-pools.cdc
+2025-09-17 11:46:17,965 - INFO - Successfully discovered 20 pools
+2025-09-17 11:46:17,966 - INFO - Updated token prices
+2025-09-17 11:46:17,966 - INFO - 
+Top 10 Viable Opportunities:
+2025-09-17 11:46:17,966 - INFO - ------------------------------------------------------------------------------------------
+2025-09-17 11:46:17,966 - INFO -  1. Pool  0 | FLOW-USDC     | APY:  2000.00% | TVL:     130.14 | IL Risk:  40.0% | Capacity: 184467440607
+2025-09-17 11:46:17,966 - INFO -  2. Pool  1 | FLOW-USDC     | APY:  2000.00% | TVL:     202.90 | IL Risk:  40.0% | Capacity: 184467440534
+2025-09-17 11:46:17,966 - INFO -  3. Pool  2 | FLOW-USDC     | APY:  2000.00% | TVL:     166.94 | IL Risk:  40.0% | Capacity: 184467440570
+2025-09-17 11:46:17,966 - INFO -  4. Pool  3 | FLOW-stFLOW   | APY:  2000.00% | TVL:      39.42 | IL Risk:  10.0% | Capacity: 184467440698
+2025-09-17 11:46:17,966 - INFO -  5. Pool  4 | FLOW-USDC     | APY:  2000.00% | TVL:      14.44 | IL Risk:  40.0% | Capacity: 184467440723
+2025-09-17 11:46:17,966 - INFO -  6. Pool  5 | SDM-FLOW     | APY:  2000.00% | TVL:   21547.74 | IL Risk:  75.0% | Capacity: 184467419189
+2025-09-17 11:46:17,966 - INFO -  7. Pool  6 | FLOW-stFLOW   | APY:  2000.00% | TVL:     201.29 | IL Risk:  10.0% | Capacity: 184467440536
+2025-09-17 11:46:17,967 - INFO -  8. Pool  7 | FLOW-USDC     | APY:  2000.00% | TVL:      44.01 | IL Risk:  40.0% | Capacity: 184467440693
+2025-09-17 11:46:17,967 - INFO -  9. Pool  8 | FLOW-USDC     | APY:  2000.00% | TVL:     588.89 | IL Risk:  40.0% | Capacity: 184467440148
+2025-09-17 11:46:17,967 - INFO - 10. Pool  9 | FLOW-stFLOW   | APY:  2000.00% | TVL:       5.50 | IL Risk:  10.0% | Capacity: 184467440732
+2025-09-17 11:46:17,967 - INFO - 
+--- ALLOCATION CALCULATION TEST ---
+2025-09-17 11:46:17,979 - INFO - 
+Optimal Allocation for 2.0 FLOW:
+2025-09-17 11:46:17,979 - INFO - ----------------------------------------------------------------------
+2025-09-17 11:46:17,979 - INFO - Pool 18: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 11:46:17,979 - INFO - Pool  3: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 11:46:17,979 - INFO - ----------------------------------------------------------------------
+2025-09-17 11:46:17,979 - INFO - Total Allocated: 2.0000 FLOW (100.0%)
+2025-09-17 11:46:17,979 - INFO - Portfolio APY: 2000.00%
+2025-09-17 11:46:17,980 - INFO - 
+--- TRANSACTION SIMULATION TEST ---
+2025-09-17 11:46:17,980 - INFO - Sending real transaction: cadence/transactions/stake-lp-in-farm.cdc
+2025-09-17 11:46:18,217 - ERROR - Transaction failed: ❌ Command Error: signer account: [0x79f5b5b0f95a160b] doesn't exists in configuration
+2025-09-17 11:46:18,217 - ERROR - Test failed: Command '['flow', 'transactions', 'send', 'cadence/transactions/stake-lp-in-farm.cdc', '--network=mainnet', '--signer=0x79f5b5b0f95a160b', '18', '1.0']' returned non-zero exit status 1.
+2025-09-17 11:54:25,587 - INFO - ============================================================
+2025-09-17 11:54:25,587 - INFO - FIXED LP FARMING COMPREHENSIVE TEST
+2025-09-17 11:54:25,587 - INFO - Capital: 2.0 FLOW
+2025-09-17 11:54:25,587 - INFO - Paper Trading: False
+2025-09-17 11:54:25,588 - INFO - User Address: 0x79f5b5b0f95a160b
+2025-09-17 11:54:25,588 - INFO - ============================================================
+2025-09-17 11:54:25,588 - INFO - 
+--- POOL DISCOVERY TEST ---
+2025-09-17 11:54:25,588 - INFO - Executing script: cadence/scripts/get-increment-pools.cdc
+2025-09-17 11:54:26,199 - INFO - Successfully discovered 20 pools
+2025-09-17 11:54:26,199 - INFO - Updated token prices
+2025-09-17 11:54:26,200 - INFO - 
+Top 10 Viable Opportunities:
+2025-09-17 11:54:26,200 - INFO - ------------------------------------------------------------------------------------------
+2025-09-17 11:54:26,200 - INFO -  1. Pool  0 | FLOW-USDC     | APY:  2000.00% | TVL:     130.14 | IL Risk:  40.0% | Capacity: 184467440607
+2025-09-17 11:54:26,200 - INFO -  2. Pool  1 | FLOW-USDC     | APY:  2000.00% | TVL:     202.90 | IL Risk:  40.0% | Capacity: 184467440534
+2025-09-17 11:54:26,200 - INFO -  3. Pool  2 | FLOW-USDC     | APY:  2000.00% | TVL:     166.94 | IL Risk:  40.0% | Capacity: 184467440570
+2025-09-17 11:54:26,200 - INFO -  4. Pool  3 | FLOW-stFLOW   | APY:  2000.00% | TVL:      39.42 | IL Risk:  10.0% | Capacity: 184467440698
+2025-09-17 11:54:26,200 - INFO -  5. Pool  4 | FLOW-USDC     | APY:  2000.00% | TVL:      14.44 | IL Risk:  40.0% | Capacity: 184467440723
+2025-09-17 11:54:26,200 - INFO -  6. Pool  5 | SDM-FLOW     | APY:  2000.00% | TVL:   21547.74 | IL Risk:  75.0% | Capacity: 184467419189
+2025-09-17 11:54:26,200 - INFO -  7. Pool  6 | FLOW-stFLOW   | APY:  2000.00% | TVL:     201.29 | IL Risk:  10.0% | Capacity: 184467440536
+2025-09-17 11:54:26,200 - INFO -  8. Pool  7 | FLOW-USDC     | APY:  2000.00% | TVL:      44.01 | IL Risk:  40.0% | Capacity: 184467440693
+2025-09-17 11:54:26,200 - INFO -  9. Pool  8 | FLOW-USDC     | APY:  2000.00% | TVL:     588.89 | IL Risk:  40.0% | Capacity: 184467440148
+2025-09-17 11:54:26,200 - INFO - 10. Pool  9 | FLOW-stFLOW   | APY:  2000.00% | TVL:       5.50 | IL Risk:  10.0% | Capacity: 184467440732
+2025-09-17 11:54:26,200 - INFO - 
+--- ALLOCATION CALCULATION TEST ---
+2025-09-17 11:54:26,208 - INFO - 
+Optimal Allocation for 2.0 FLOW:
+2025-09-17 11:54:26,208 - INFO - ----------------------------------------------------------------------
+2025-09-17 11:54:26,208 - INFO - Pool 18: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 11:54:26,208 - INFO - Pool  3: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 11:54:26,208 - INFO - ----------------------------------------------------------------------
+2025-09-17 11:54:26,208 - INFO - Total Allocated: 2.0000 FLOW (100.0%)
+2025-09-17 11:54:26,208 - INFO - Portfolio APY: 2000.00%
+2025-09-17 11:54:26,208 - INFO - 
+--- TRANSACTION SIMULATION TEST ---
+2025-09-17 11:54:26,208 - INFO - Sending real transaction: cadence/transactions/stake-lp-in-farm.cdc
+2025-09-17 11:54:26,448 - ERROR - Transaction failed: ❌ Command Error: signer account: [0x79f5b5b0f95a160b] doesn't exists in configuration
+2025-09-17 11:54:26,448 - ERROR - Test failed: Command '['flow', 'transactions', 'send', 'cadence/transactions/stake-lp-in-farm.cdc', '--network=mainnet', '--signer=0x79f5b5b0f95a160b', '18', '1.0']' returned non-zero exit status 1.
+2025-09-17 11:56:22,689 - INFO - ============================================================
+2025-09-17 11:56:22,690 - INFO - FIXED LP FARMING COMPREHENSIVE TEST
+2025-09-17 11:56:22,690 - INFO - Capital: 2.0 FLOW
+2025-09-17 11:56:22,690 - INFO - Paper Trading: False
+2025-09-17 11:56:22,691 - INFO - User Address: 0x79f5b5b0f95a160b
+2025-09-17 11:56:22,691 - INFO - ============================================================
+2025-09-17 11:56:22,691 - INFO - 
+--- POOL DISCOVERY TEST ---
+2025-09-17 11:56:22,691 - INFO - Executing script: cadence/scripts/get-increment-pools.cdc
+2025-09-17 11:56:23,396 - INFO - Successfully discovered 20 pools
+2025-09-17 11:56:23,397 - INFO - Updated token prices
+2025-09-17 11:56:23,397 - INFO - 
+Top 10 Viable Opportunities:
+2025-09-17 11:56:23,397 - INFO - ------------------------------------------------------------------------------------------
+2025-09-17 11:56:23,397 - INFO -  1. Pool  0 | FLOW-USDC     | APY:  2000.00% | TVL:     130.14 | IL Risk:  40.0% | Capacity: 184467440607
+2025-09-17 11:56:23,397 - INFO -  2. Pool  1 | FLOW-USDC     | APY:  2000.00% | TVL:     202.90 | IL Risk:  40.0% | Capacity: 184467440534
+2025-09-17 11:56:23,397 - INFO -  3. Pool  2 | FLOW-USDC     | APY:  2000.00% | TVL:     166.94 | IL Risk:  40.0% | Capacity: 184467440570
+2025-09-17 11:56:23,398 - INFO -  4. Pool  3 | FLOW-stFLOW   | APY:  2000.00% | TVL:      39.42 | IL Risk:  10.0% | Capacity: 184467440698
+2025-09-17 11:56:23,398 - INFO -  5. Pool  4 | FLOW-USDC     | APY:  2000.00% | TVL:      14.44 | IL Risk:  40.0% | Capacity: 184467440723
+2025-09-17 11:56:23,398 - INFO -  6. Pool  5 | SDM-FLOW     | APY:  2000.00% | TVL:   21547.74 | IL Risk:  75.0% | Capacity: 184467419189
+2025-09-17 11:56:23,398 - INFO -  7. Pool  6 | FLOW-stFLOW   | APY:  2000.00% | TVL:     201.29 | IL Risk:  10.0% | Capacity: 184467440536
+2025-09-17 11:56:23,398 - INFO -  8. Pool  7 | FLOW-USDC     | APY:  2000.00% | TVL:      44.01 | IL Risk:  40.0% | Capacity: 184467440693
+2025-09-17 11:56:23,398 - INFO -  9. Pool  8 | FLOW-USDC     | APY:  2000.00% | TVL:     588.89 | IL Risk:  40.0% | Capacity: 184467440148
+2025-09-17 11:56:23,398 - INFO - 10. Pool  9 | FLOW-stFLOW   | APY:  2000.00% | TVL:       5.50 | IL Risk:  10.0% | Capacity: 184467440732
+2025-09-17 11:56:23,398 - INFO - 
+--- ALLOCATION CALCULATION TEST ---
+2025-09-17 11:56:23,411 - INFO - 
+Optimal Allocation for 2.0 FLOW:
+2025-09-17 11:56:23,411 - INFO - ----------------------------------------------------------------------
+2025-09-17 11:56:23,411 - INFO - Pool 18: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 11:56:23,411 - INFO - Pool  3: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 11:56:23,411 - INFO - ----------------------------------------------------------------------
+2025-09-17 11:56:23,411 - INFO - Total Allocated: 2.0000 FLOW (100.0%)
+2025-09-17 11:56:23,411 - INFO - Portfolio APY: 2000.00%
+2025-09-17 11:56:23,411 - INFO - 
+--- TRANSACTION SIMULATION TEST ---
+2025-09-17 11:56:23,411 - INFO - Sending real transaction: cadence/transactions/stake-lp-in-farm.cdc
+2025-09-17 11:56:23,635 - ERROR - Transaction failed: ❌ Command Error: signer account: [0x79f5b5b0f95a160b] doesn't exists in configuration
+2025-09-17 11:56:23,635 - ERROR - Test failed: Command '['flow', 'transactions', 'send', 'cadence/transactions/stake-lp-in-farm.cdc', '--network=mainnet', '--signer=0x79f5b5b0f95a160b', '18', '1.0']' returned non-zero exit status 1.
+2025-09-17 12:10:52,493 - INFO - ============================================================
+2025-09-17 12:10:52,494 - INFO - FIXED LP FARMING COMPREHENSIVE TEST
+2025-09-17 12:10:52,494 - INFO - Capital: 2.0 FLOW
+2025-09-17 12:10:52,494 - INFO - Paper Trading: False
+2025-09-17 12:10:52,494 - INFO - User Address: 0x79f5b5b0f95a160b
+2025-09-17 12:10:52,494 - INFO - ============================================================
+2025-09-17 12:10:52,494 - INFO - 
+--- POOL DISCOVERY TEST ---
+2025-09-17 12:10:52,494 - INFO - Executing script: cadence/scripts/get-increment-pools.cdc
+2025-09-17 12:10:53,158 - INFO - Successfully discovered 20 pools
+2025-09-17 12:10:53,158 - INFO - Updated token prices
+2025-09-17 12:10:53,158 - INFO - 
+Top 10 Viable Opportunities:
+2025-09-17 12:10:53,158 - INFO - ------------------------------------------------------------------------------------------
+2025-09-17 12:10:53,159 - INFO -  1. Pool  0 | FLOW-USDC     | APY:  2000.00% | TVL:     130.14 | IL Risk:  40.0% | Capacity: 184467440607
+2025-09-17 12:10:53,159 - INFO -  2. Pool  1 | FLOW-USDC     | APY:  2000.00% | TVL:     202.90 | IL Risk:  40.0% | Capacity: 184467440534
+2025-09-17 12:10:53,159 - INFO -  3. Pool  2 | FLOW-USDC     | APY:  2000.00% | TVL:     166.94 | IL Risk:  40.0% | Capacity: 184467440570
+2025-09-17 12:10:53,159 - INFO -  4. Pool  3 | FLOW-stFLOW   | APY:  2000.00% | TVL:      39.42 | IL Risk:  10.0% | Capacity: 184467440698
+2025-09-17 12:10:53,159 - INFO -  5. Pool  4 | FLOW-USDC     | APY:  2000.00% | TVL:      14.44 | IL Risk:  40.0% | Capacity: 184467440723
+2025-09-17 12:10:53,159 - INFO -  6. Pool  5 | SDM-FLOW     | APY:  2000.00% | TVL:   21547.74 | IL Risk:  75.0% | Capacity: 184467419189
+2025-09-17 12:10:53,159 - INFO -  7. Pool  6 | FLOW-stFLOW   | APY:  2000.00% | TVL:     201.29 | IL Risk:  10.0% | Capacity: 184467440536
+2025-09-17 12:10:53,159 - INFO -  8. Pool  7 | FLOW-USDC     | APY:  2000.00% | TVL:      44.01 | IL Risk:  40.0% | Capacity: 184467440693
+2025-09-17 12:10:53,159 - INFO -  9. Pool  8 | FLOW-USDC     | APY:  2000.00% | TVL:     588.89 | IL Risk:  40.0% | Capacity: 184467440148
+2025-09-17 12:10:53,159 - INFO - 10. Pool  9 | FLOW-stFLOW   | APY:  2000.00% | TVL:       5.50 | IL Risk:  10.0% | Capacity: 184467440732
+2025-09-17 12:10:53,159 - INFO - 
+--- ALLOCATION CALCULATION TEST ---
+2025-09-17 12:10:53,169 - INFO - 
+Optimal Allocation for 2.0 FLOW:
+2025-09-17 12:10:53,169 - INFO - ----------------------------------------------------------------------
+2025-09-17 12:10:53,169 - INFO - Pool 18: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 12:10:53,169 - INFO - Pool  3: 1.0000 FLOW ( 50.0%) | FLOW-stFLOW   | APY: 2000.00% | IL Risk:  10.0%
+2025-09-17 12:10:53,169 - INFO - ----------------------------------------------------------------------
+2025-09-17 12:10:53,169 - INFO - Total Allocated: 2.0000 FLOW (100.0%)
+2025-09-17 12:10:53,169 - INFO - Portfolio APY: 2000.00%
+2025-09-17 12:10:53,169 - INFO - 
+--- TRANSACTION SIMULATION TEST ---
+2025-09-17 12:10:53,169 - INFO - Sending real transaction: cadence/transactions/stake-lp-in-farm.cdc
+2025-09-17 12:10:53,402 - ERROR - Transaction failed: ❌ Command Error: signer account: [0x79f5b5b0f95a160b] doesn't exists in configuration
+2025-09-17 12:10:53,402 - ERROR - Test failed: Command '['flow', 'transactions', 'send', 'cadence/transactions/stake-lp-in-farm.cdc', '--network=mainnet', '--signer=0x79f5b5b0f95a160b', '18', '1.0']' returned non-zero exit status 1.
