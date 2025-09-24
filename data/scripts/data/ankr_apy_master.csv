@@ -1,0 +1,2 @@
+timestamp,current_apy,total_staked,apy_basis,exchange_rate,source,block_number,datetime,date,tracker
+1756646238,8.398146512,48138103.14524288,WEEK,,ankr_official_api,38737924,2025-08-31 13:17:18,2025-08-31,ankr_flow

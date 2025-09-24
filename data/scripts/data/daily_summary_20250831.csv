@@ -1,0 +1,9 @@
+date,tracker,primary_apy,tvl_or_staked,asset,apy_type
+20250831,Ankr Flow Staking,8.398146512,48138103.14524288,FLOW,staking
+20250831,KittyPunch LP,0.25953,17474075.0,USDF,liquidity_provision
+20250831,KittyPunch LP,0.02278,10864837.0,ANKRFLOWEVM,liquidity_provision
+20250831,KittyPunch LP,1.32534,4631168.0,WFLOW,liquidity_provision
+20250831,KittyPunch LP,0.11067,1612532.0,WETH,liquidity_provision
+20250831,KittyPunch LP,7.43672,845527.0,STGUSDC,liquidity_provision
+20250831,More.Markets Lending,1.316635079492252,38902944.71753931,WFLOW,lending
+20250831,More.Markets Lending,0.0227733296280405,24155010.843929227,ankrFLOW,lending

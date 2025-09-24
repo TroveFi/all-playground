@@ -1,0 +1,6 @@
+timestamp,pair_symbol,trading_fee_apy,farm_reward_apy,total_apy,tvl_usd,volume_24h,source,block_number,datetime,date,tracker
+1756646240,USDF,0.25953,0.0,0.25953,17474075.0,0.0,defillama_api_fixed,38737927,2025-08-31 13:17:20,2025-08-31,kittypunch
+1756646240,ANKRFLOWEVM,0.02278,0.0,0.02278,10864837.0,0.0,defillama_api_fixed,38737927,2025-08-31 13:17:20,2025-08-31,kittypunch
+1756646240,WFLOW,1.32534,0.0,1.32534,4631168.0,0.0,defillama_api_fixed,38737927,2025-08-31 13:17:20,2025-08-31,kittypunch
+1756646240,WETH,0.11067,0.0,0.11067,1612532.0,0.0,defillama_api_fixed,38737927,2025-08-31 13:17:20,2025-08-31,kittypunch
+1756646240,STGUSDC,7.43672,0.0,7.43672,845527.0,0.0,defillama_api_fixed,38737927,2025-08-31 13:17:20,2025-08-31,kittypunch
