@@ -1,0 +1,162 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ITrueMultiAssetVault",
+  "sourceName": "contracts/core/VaultFrontendHelper.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getClaimableEpochs",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "claimableEpochs",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserEpochStatus",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "eligibleForCurrentEpoch",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "currentEpoch",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timeRemaining",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "hasUnclaimedRewards",
+          "type": "bool"
+        },
+        {
+          "internalType": "enum IEpochRewardManager.RiskLevel",
+          "name": "riskLevel",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserPosition",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "totalShares",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "lastDeposit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "withdrawalRequested",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "withdrawalAvailableAt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum IEpochRewardManager.RiskLevel",
+          "name": "riskLevel",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalDeposited",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "epochNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "getUserRewardParameters",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "baseWeight",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timeWeight",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "riskMultiplier",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalWeight",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "winProbability",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "potentialPayout",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
