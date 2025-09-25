@@ -93,3 +93,105 @@ SELECT
     END as addr_change_24h
 FROM address_changes
 ORDER BY block_date DESC
+
+
+//////
+TESTING:
+Increment stFlow Metrics
+
+
+-- Get stFlow/FLOW price and staking data
+WITH stflow_events AS (
+  SELECT 
+    block_time,
+    block_date,
+    contract_address,
+    -- Parse stFlow mint/burn events to calculate price
+    -- This requires decoding the specific event logs
+    CASE 
+      WHEN topic0 = 0x... -- stFlow mint event signature
+      THEN CAST(data AS DOUBLE) / 1e18
+    END as flow_amount,
+    CASE 
+      WHEN topic0 = 0x... -- stFlow mint event signature  
+      THEN CAST(topic1 AS DOUBLE) / 1e18
+    END as stflow_amount
+  FROM flow.logs_decoded
+  WHERE contract_address = 0x5598c0652B899EB40f169Dd5949BdBE0BF36ffDe -- stFlow EVM address
+    AND block_date >= CURRENT_DATE - INTERVAL '7' day
+)
+SELECT 
+  MAX(block_date) as latest_date,
+  -- Calculate stFlow/FLOW exchange rate
+  AVG(flow_amount / NULLIF(stflow_amount, 0)) as stflow_flow_rate,
+  SUM(flow_amount) as total_flow_staked,
+  COUNT(*) as staking_transactions
+FROM stflow_events
+WHERE flow_amount IS NOT NULL AND stflow_amount IS NOT NULL
+
+
+
+/////
+
+
+-- IncrementFi DEX trading volume and liquidity
+SELECT 
+  block_date,
+  COUNT(*) as swap_transactions,
+  -- Decode swap events from IncrementFi router
+  SUM(CASE WHEN topic0 = 0x... THEN CAST(data AS DOUBLE) / 1e18 END) as total_volume_flow,
+  COUNT(DISTINCT tx_from) as unique_traders
+FROM flow.logs_decoded
+WHERE contract_address IN (
+  0xa6850776a94e6551, -- SwapRouter (Cadence)
+  -- Add EVM equivalent addresses if available
+) 
+AND block_date >= CURRENT_DATE - INTERVAL '7' day
+GROUP BY block_date
+ORDER BY block_date DESC
+
+
+//////
+
+
+-- Track bridge volume for USDC, USDT, WETH etc
+SELECT 
+  block_date,
+  contract_address,
+  CASE 
+    WHEN contract_address = 0xF1815bd50389c46847f0Bda824eC8da914045D14 THEN 'USDC'
+    WHEN contract_address = 0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8 THEN 'USDT'
+    WHEN contract_address = 0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590 THEN 'WETH'
+    ELSE 'Other'
+  END as token_name,
+  COUNT(*) as bridge_transactions,
+  SUM(CAST(data AS DOUBLE) / 1e18) as total_volume
+FROM flow.logs_decoded
+WHERE contract_address IN (
+  0xF1815bd50389c46847f0Bda824eC8da914045D14, -- USDC
+  0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8, -- USDT  
+  0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590  -- WETH
+)
+AND block_date >= CURRENT_DATE - INTERVAL '7' day
+GROUP BY block_date, contract_address
+ORDER BY block_date DESC
+
+
+
+/////
+
+-- FLOW/USDC price from DEX trades
+SELECT 
+  block_date,
+  AVG(CASE 
+    WHEN topic1 = 'FLOW' AND topic2 = 'USDC' 
+    THEN CAST(data AS DOUBLE) 
+  END) as flow_usd_price
+FROM flow.logs_decoded  
+WHERE contract_address IN (
+  0x87048a97526c4B66b71004927D24F61DEFcD6375 -- KittyPunch Router
+)
+AND block_date >= CURRENT_DATE - INTERVAL '1' day
+GROUP BY block_date
+ORDER BY block_date DESC
+LIMIT 1
