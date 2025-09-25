@@ -9,7 +9,7 @@ import IncrementFiFlashloanConnectors from 0x49bae091e5ea16b5
 import DeFiActions from 0x4c2ff9dd03ab442f
 
 // Borrow FLOW directly from a SwapPair, using the generic Executor.
-// This bypasses Flasher's init-time identifier check.
+// Safe to run multiple times (will reuse an existing Executor).
 transaction(pairAddress: Address, amount: UFix64) {
     prepare(signer: auth(BorrowValue, IssueStorageCapabilityController, SaveValue) &Account) {
         pre {
@@ -21,14 +21,20 @@ transaction(pairAddress: Address, amount: UFix64) {
         log("Pair: ".concat(pairAddress.toString()))
         log("Amount: ".concat(amount.toString()))
 
-        // 1) Create + save the generic executor
-        let executor <- IncrementFiFlashloanConnectors.createExecutor()
-        signer.storage.save(<-executor, to: IncrementFiFlashloanConnectors.ExecutorStoragePath)
+        // 1) Ensure an Executor exists at the canonical path (create+save only if missing)
+        let execPath = IncrementFiFlashloanConnectors.ExecutorStoragePath
+        if signer.storage.type(at: execPath) == nil {
+            let executor <- IncrementFiFlashloanConnectors.createExecutor()
+            signer.storage.save(<-executor, to: execPath)
+            log("Executor created & saved at ".concat(execPath.toString()))
+        } else {
+            log("Executor already exists at ".concat(execPath.toString()))
+        }
 
+        // Issue a typed capability to the stored Executor
         let execCap: Capability<&{SwapInterfaces.FlashLoanExecutor}> =
-            signer.capabilities.storage.issue<&{SwapInterfaces.FlashLoanExecutor}>(
-                IncrementFiFlashloanConnectors.ExecutorStoragePath
-            )
+            signer.capabilities.storage.issue<&{SwapInterfaces.FlashLoanExecutor}>(execPath)
+        assert(execCap.check(), message: "Executor capability invalid")
 
         // 2) Compute fee from factory bps
         let bps = SwapFactory.getFlashloanRateBps() // Int
@@ -53,9 +59,7 @@ transaction(pairAddress: Address, amount: UFix64) {
             log("Loaned: ".concat(loanVault.balance.toString()))
             log("Fee: ".concat(feeAmount.toString()))
 
-            // Do your custom logic here with `loanVault` (arbs, repay, whatever).
-            // For this dry run, just pay the fee from FLOW vault and repay.
-
+            // Your custom logic goes here (arbs, swaps, etc.). For dry-run: pay fee then repay.
             let flowVault = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
                 from: /storage/flowTokenVault
             )!
@@ -69,8 +73,7 @@ transaction(pairAddress: Address, amount: UFix64) {
         // 5) Execute flashloan for FLOW
         pair.flashloan(
             executor: execCap.borrow() ?? panic("Could not borrow executor cap"),
-            // IMPORTANT: request FLOW by passing the FLOW *Vault type*
-            requestedTokenVaultType: Type<@FlowToken.Vault>(),
+            requestedTokenVaultType: Type<@FlowToken.Vault>(),  // Borrow FLOW
             requestedAmount: amount,
             params: params
         )
