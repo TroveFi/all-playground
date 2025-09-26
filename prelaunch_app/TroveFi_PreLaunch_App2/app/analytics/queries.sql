@@ -195,3 +195,113 @@ AND block_date >= CURRENT_DATE - INTERVAL '1' day
 GROUP BY block_date
 ORDER BY block_date DESC
 LIMIT 1
+
+
+
+////
+
+Daily transfers by token 
+
+
+-- Flow EVM Token Transfer Activity with Summary Metrics
+WITH token_transfers AS (
+  SELECT 
+    block_date,
+    CASE 
+      WHEN contract_address = 0xF1815bd50389c46847f0Bda824eC8da914045D14 THEN 'USDC'
+      WHEN contract_address = 0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8 THEN 'USDT'
+      WHEN contract_address = 0x2aaBea2058b5aC2D339b163C6Ab6f2b6d53aabED THEN 'USDF'
+      WHEN contract_address = 0x7f27352D5F83Db87a5A3E00f4B07Cc2138D8ee52 THEN 'USDC.e'
+      WHEN contract_address = 0x1b97100eA1D7126C4d60027e231EA4CB25314bdb THEN 'ankrFLOW'
+      WHEN contract_address = 0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590 THEN 'WETH'
+      WHEN contract_address = 0xA0197b2044D28b08Be34d98b23c9312158Ea9A18 THEN 'cbBTC'
+      WHEN contract_address = 0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e THEN 'WFLOW'
+      ELSE 'Other'
+    END as token_name,
+    COUNT(*) as daily_transfers,
+    COUNT(DISTINCT tx_from) as unique_senders,
+    COUNT(DISTINCT CAST(topic2 AS VARCHAR)) as unique_receivers
+  FROM flow.logs
+  WHERE contract_address IN (
+    0xF1815bd50389c46847f0Bda824eC8da914045D14,  -- USDC
+    0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8,  -- USDT
+    0x2aaBea2058b5aC2D339b163C6Ab6f2b6d53aabED,  -- USDF
+    0x7f27352D5F83Db87a5A3E00f4B07Cc2138D8ee52,  -- USDC.e
+    0x1b97100eA1D7126C4d60027e231EA4CB25314bdb,  -- ankrFLOW
+    0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590,  -- WETH
+    0xA0197b2044D28b08Be34d98b23c9312158Ea9A18,  -- cbBTC
+    0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e   -- WFLOW
+  )
+  AND topic0 = 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef  -- Transfer event
+  AND block_date >= CURRENT_DATE - INTERVAL '7' day
+  GROUP BY block_date, contract_address
+),
+daily_data AS (
+  SELECT 
+    block_date,
+    token_name,
+    daily_transfers,
+    unique_senders,
+    unique_receivers
+  FROM token_transfers
+),
+summary_metrics AS (
+  SELECT 
+    SUM(CASE WHEN token_name = 'USDF' THEN daily_transfers ELSE 0 END) as total_usdf_transfers,
+    SUM(CASE WHEN token_name = 'USDC' THEN daily_transfers ELSE 0 END) as total_usdc_transfers,
+    SUM(CASE WHEN token_name = 'ankrFLOW' THEN daily_transfers ELSE 0 END) as total_ankrflow_transfers,
+    SUM(CASE WHEN token_name = 'USDT' THEN daily_transfers ELSE 0 END) as total_usdt_transfers,
+    SUM(CASE WHEN token_name = 'WETH' THEN daily_transfers ELSE 0 END) as total_weth_transfers,
+    SUM(unique_senders) as total_unique_senders,
+    SUM(daily_transfers) as total_all_transfers,
+    COUNT(DISTINCT block_date) as days_tracked
+  FROM daily_data
+  WHERE block_date >= CURRENT_DATE - INTERVAL '7' day
+)
+SELECT 
+  -- Daily breakdown
+  block_date,
+  token_name,
+  daily_transfers,
+  unique_senders,
+  unique_receivers,
+  -- Add percentage of daily activity
+  ROUND(daily_transfers * 100.0 / SUM(daily_transfers) OVER (PARTITION BY block_date), 2) as pct_of_daily_volume
+FROM daily_data
+WHERE token_name != 'Other'
+ORDER BY block_date DESC, daily_transfers DESC
+
+
+
+
+
+/////
+
+
+Token Activity:
+
+
+-- Token transfer activity (counts only, no amounts)
+SELECT 
+  block_date,
+  CASE 
+    WHEN contract_address = 0xF1815bd50389c46847f0Bda824eC8da914045D14 THEN 'USDC'
+    WHEN contract_address = 0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8 THEN 'USDT'
+    WHEN contract_address = 0x2aaBea2058b5aC2D339b163C6Ab6f2b6d53aabED THEN 'USDF'
+    WHEN contract_address = 0x1b97100eA1D7126C4d60027e231EA4CB25314bdb THEN 'ankrFLOW'
+    ELSE 'Other'
+  END as token_name,
+  COUNT(*) as daily_transfers,
+  COUNT(DISTINCT tx_from) as unique_senders,
+  COUNT(DISTINCT CAST(topic2 AS VARCHAR)) as unique_receivers
+FROM flow.logs
+WHERE contract_address IN (
+  0xF1815bd50389c46847f0Bda824eC8da914045D14,  -- USDC
+  0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8,  -- USDT
+  0x2aaBea2058b5aC2D339b163C6Ab6f2b6d53aabED,  -- USDF
+  0x1b97100eA1D7126C4d60027e231EA4CB25314bdb   -- ankrFLOW
+)
+AND topic0 = 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+AND block_date >= CURRENT_DATE - INTERVAL '7' day
+GROUP BY block_date, contract_address
+ORDER BY block_date DESC, daily_transfers DESC
