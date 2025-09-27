@@ -38,7 +38,7 @@ async function main() {
     
     try {
         // STEP 1: Check wallet balances
-        console.log("\n💼 WALLET BALANCES");
+        console.log("\nWALLET BALANCES");
         console.log("==================");
         
         // Check native FLOW balance
@@ -49,7 +49,6 @@ async function main() {
         for (const [symbol, address] of Object.entries(TOKENS)) {
             try {
                 if (symbol === "WFLOW") {
-                    // WFLOW has different ABI
                     const token = await ethers.getContractAt([
                         {"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
                         {"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}
@@ -57,42 +56,31 @@ async function main() {
                     const balance = await token.balanceOf(deployer.address);
                     const decimals = await token.decimals();
                     const formatted = ethers.formatUnits(balance, decimals);
-                    if (Number(formatted) > 0) {
-                        console.log(`${symbol}: ${Number(formatted).toLocaleString()}`);
-                    } else {
-                        console.log(`${symbol}: 0`);
-                    }
+                    console.log(`${symbol}: ${Number(formatted) > 0 ? Number(formatted).toLocaleString() : "0"}`);
                 } else {
-                    // Standard ERC20
                     const token = await ethers.getContractAt([
                         {"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
                         {"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"}
                     ], address);
                     const balance = await token.balanceOf(deployer.address);
                     
-                    // Handle different decimals
                     let decimals = 18;
                     try {
                         decimals = await token.decimals();
                     } catch (e) {
-                        // Some tokens might not have decimals function
                         if (symbol === "USDF" || symbol === "stgUSDC") decimals = 6;
                     }
                     
                     const formatted = ethers.formatUnits(balance, decimals);
-                    if (Number(formatted) > 0) {
-                        console.log(`${symbol}: ${Number(formatted).toLocaleString()}`);
-                    } else {
-                        console.log(`${symbol}: 0`);
-                    }
+                    console.log(`${symbol}: ${Number(formatted) > 0 ? Number(formatted).toLocaleString() : "0"}`);
                 }
             } catch (error) {
-                console.log(`${symbol}: Error - ${error.message.slice(0, 50)}...`);
+                console.log(`${symbol}: Error`);
             }
         }
         
         // STEP 2: Check MORE Markets positions
-        console.log("\n🏦 MORE MARKETS POSITIONS");
+        console.log("\nMORE MARKETS POSITIONS");
         console.log("=========================");
         
         // Get user account data (overall health)
@@ -101,10 +89,10 @@ async function main() {
         if (Number(accountData.totalCollateralBase) === 0 && Number(accountData.totalDebtBase) === 0) {
             console.log("No positions in MORE Markets");
         } else {
-            console.log("📊 Account Overview:");
-            console.log(`   Total Collateral: ${ethers.formatUnits(accountData.totalCollateralBase, 8)}`);
-            console.log(`   Total Debt: ${ethers.formatUnits(accountData.totalDebtBase, 8)}`);
-            console.log(`   Available to Borrow: ${ethers.formatUnits(accountData.availableBorrowsBase, 8)}`);
+            console.log("Account Overview:");
+            console.log(`   Total Collateral: $${ethers.formatUnits(accountData.totalCollateralBase, 8)}`);
+            console.log(`   Total Debt: $${ethers.formatUnits(accountData.totalDebtBase, 8)}`);
+            console.log(`   Available to Borrow: $${ethers.formatUnits(accountData.availableBorrowsBase, 8)}`);
             console.log(`   Current LTV: ${(Number(accountData.ltv) / 100).toFixed(2)}%`);
             console.log(`   Liquidation Threshold: ${(Number(accountData.currentLiquidationThreshold) / 100).toFixed(2)}%`);
             
@@ -113,7 +101,7 @@ async function main() {
                 console.log(`   Health Factor: ∞ (No debt)`);
             } else {
                 const hfFormatted = (healthFactor / 1e18).toFixed(3);
-                console.log(`   Health Factor: ${hfFormatted} ${healthFactor < 1e18 ? "⚠️  DANGER" : "✅"}`);
+                console.log(`   Health Factor: ${hfFormatted} ${healthFactor < 1e18 ? "DANGER" : "OK"}`);
             }
         }
         
@@ -121,7 +109,7 @@ async function main() {
         const [userReservesData, userEMode] = await uiPoolDataProvider.getUserReservesData(POOL_ADDRESSES_PROVIDER, deployer.address);
         
         if (userReservesData.length > 0) {
-            console.log(`\n📈 Detailed Positions (E-Mode: ${userEMode}):`);
+            console.log(`\nDetailed Positions (E-Mode: ${userEMode}):`);
             
             // Get all reserves data to match symbols and decimals
             const [allReservesData] = await uiPoolDataProvider.getReservesData(POOL_ADDRESSES_PROVIDER);
@@ -129,9 +117,12 @@ async function main() {
             let hasSupplies = false;
             let hasDebts = false;
             
-            console.log("\n💰 SUPPLIED ASSETS:");
+            console.log("\nSUPPLIED ASSETS:");
             for (const userReserve of userReservesData) {
+                if (!userReserve.underlyingAsset) continue;
+                
                 const reserveData = allReservesData.find(r => 
+                    r.underlyingAsset && 
                     r.underlyingAsset.toLowerCase() === userReserve.underlyingAsset.toLowerCase()
                 );
                 
@@ -140,7 +131,7 @@ async function main() {
                     const suppliedAmount = ethers.formatUnits(userReserve.scaledATokenBalance, reserveData.decimals);
                     const supplyAPY = ((Number(reserveData.liquidityRate) / 1e27) * 100).toFixed(2);
                     console.log(`   ${reserveData.symbol}: ${Number(suppliedAmount).toLocaleString()} (${supplyAPY}% APY)`);
-                    console.log(`      Used as Collateral: ${userReserve.usageAsCollateralEnabledOnUser ? "✅ Yes" : "❌ No"}`);
+                    console.log(`      Used as Collateral: ${userReserve.usageAsCollateralEnabledOnUser ? "Yes" : "No"}`);
                 }
             }
             
@@ -148,9 +139,12 @@ async function main() {
                 console.log("   None");
             }
             
-            console.log("\n💸 BORROWED ASSETS:");
+            console.log("\nBORROWED ASSETS:");
             for (const userReserve of userReservesData) {
+                if (!userReserve.underlyingAsset) continue;
+                
                 const reserveData = allReservesData.find(r => 
+                    r.underlyingAsset && 
                     r.underlyingAsset.toLowerCase() === userReserve.underlyingAsset.toLowerCase()
                 );
                 
@@ -182,7 +176,7 @@ async function main() {
         }
         
         // STEP 3: Check aToken balances (if any)
-        console.log("\n🪙 ATOKEN BALANCES");
+        console.log("\nATOKEN BALANCES");
         console.log("==================");
         
         const aTokenAddresses = {
@@ -217,42 +211,42 @@ async function main() {
         }
         
         // STEP 4: Summary and actions
-        console.log("\n📋 SUMMARY");
+        console.log("\nSUMMARY");
         console.log("==========");
         
         const hasWalletAssets = Number(nativeBalance) > ethers.parseEther("0.01");
         const hasMarketPositions = Number(accountData.totalCollateralBase) > 0 || Number(accountData.totalDebtBase) > 0;
         
         if (hasWalletAssets) {
-            console.log("✅ You have assets in your wallet that can be supplied to MORE Markets");
+            console.log("You have assets in your wallet that can be supplied to MORE Markets");
         }
         
         if (hasMarketPositions) {
-            console.log("✅ You have active positions in MORE Markets");
+            console.log("You have active positions in MORE Markets");
             if (Number(accountData.availableBorrowsBase) > 0) {
-                console.log(`💡 You can borrow up to ${ethers.formatUnits(accountData.availableBorrowsBase, 8)} more`);
+                console.log(`You can borrow up to ${ethers.formatUnits(accountData.availableBorrowsBase, 8)} more`);
             }
         } else {
-            console.log("💡 No positions in MORE Markets - consider supplying assets to earn yield");
+            console.log("No positions in MORE Markets - consider supplying assets to earn yield");
         }
         
-        console.log("\n🔄 Available Actions:");
+        console.log("\nAvailable Actions:");
         if (hasWalletAssets) {
-            console.log("   📥 Supply assets: npx hardhat run scripts/supply-to-more.js --network flow_mainnet");
+            console.log("   Supply assets: npx hardhat run scripts/supply-to-more-clean.js --network flow_mainnet");
         }
         if (hasMarketPositions) {
-            console.log("   📤 Withdraw assets: npx hardhat run scripts/withdraw-from-more.js --network flow_mainnet");
+            console.log("   Withdraw assets: npx hardhat run scripts/withdraw-from-more.js --network flow_mainnet");
             if (Number(accountData.availableBorrowsBase) > 0) {
-                console.log("   💳 Borrow assets: npx hardhat run scripts/borrow-from-more.js --network flow_mainnet");
+                console.log("   Borrow assets: npx hardhat run scripts/borrow-from-more.js --network flow_mainnet");
             }
             if (Number(accountData.totalDebtBase) > 0) {
-                console.log("   💰 Repay debt: npx hardhat run scripts/repay-debt.js --network flow_mainnet");
+                console.log("   Repay debt: npx hardhat run scripts/repay-debt.js --network flow_mainnet");
             }
         }
-        console.log("   📊 Market overview: npx hardhat run scripts/query-markets-data.js --network flow_mainnet");
+        console.log("   Market overview: npx hardhat run scripts/query-markets-data-fixed.js --network flow_mainnet");
         
     } catch (error) {
-        console.error("❌ Error checking balances:", error.message);
+        console.error("Error checking balances:", error.message);
         throw error;
     }
 }
