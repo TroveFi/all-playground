@@ -548,3 +548,115 @@ loopingStrategy: 0xC14728c8CC4c9a76B0cDBee3305ab33D7dc0e5CE
   ✅ AnkrMORELoopingStrategy: 0x417c3bfBDb9B46903b553933611555E8277950A4
   → Deploying SwapStrategy...
   ✅ SwapStrategy: 0x7F0f76c069D85A5BE99dfD65baE9677f5DbFAfd9
+
+
+X:
+ppwoork@Patricks-MacBook-Pro contract-deployment % npx hardhat run scripts/deployX.js --network flow_mainnet
+WARNING: You are currently using Node.js v23.9.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://hardhat.org/nodejs-versions
+
+
+╔════════════════════════════════════════════════════════════╗
+║  DEPLOYING FLOW EVM VAULT - PRODUCTION READY              ║
+╚════════════════════════════════════════════════════════════╝
+
+Deploying from: 0xbaD4374FeB7ec757027CF2186B6eb6f32412f723
+Balance: 12.51083323304 FLOW
+
+📍 STEP 1: Deploying PriceOracle...
+✅ PriceOracle deployed: 0x20128a983a34dE67681733b43f395286FD2b5F20
+
+📍 STEP 2: Deploying TrueMultiAssetVaultCore...
+✅ VaultCore deployed: 0xc0F67510F9E8974345f7fE8b8981C780F94BFbf9
+
+📍 STEP 3: Deploying VaultExtension...
+✅ VaultExtension deployed: 0x8e77E807946b3E09acf183f2A9e9cBDF14F4E171
+
+📍 STEP 4: Deploying StrategyManager...
+✅ StrategyManager deployed: 0x915537401B7BC088d54a58e55b488B821508A55f
+
+📍 STEP 5: Deploying RiskManager...
+✅ RiskManager deployed: 0x13990F614A6F3A6ebec7CB7996A559Ad30276442
+
+📍 STEP 6: Deploying VaultFrontendHelper...
+✅ FrontendHelper deployed: 0x0B24e308D88DeB1aB4113A2bcf6e011299C8b97b
+
+📍 STEP 7: Deploying Strategy Contracts...
+  → Deploying AnkrStakingStrategy...
+  ✅ AnkrStakingStrategy: 0x7295A200Fcbfef54771430484426BAb5772f8D9b
+  → Deploying MoreMarketsStrategy...
+  ✅ MoreMarketsStrategy: 0xF3EE6953A914b2e26ED95d21655Dab46a7b7355b
+  → Deploying AnkrMORELoopingStrategy...
+  ✅ AnkrMORELoopingStrategy: 0x417c3bfBDb9B46903b553933611555E8277950A4
+  → Deploying SwapStrategy...
+  ✅ SwapStrategy: 0x7F0f76c069D85A5BE99dfD65baE9677f5DbFAfd9
+
+📍 STEP 8: Configuring VaultCore...
+  → Setting VaultExtension...
+  → Setting StrategyManager...
+  → Setting RiskManager...
+  → Whitelisting strategies...
+  ✅ VaultCore configured
+
+📍 STEP 9: Registering strategies...
+  ✅ Registered AnkrStakingStrategy
+  ✅ Registered MoreMarketsStrategy
+  ✅ Registered AnkrMORELoopingStrategy
+  ✅ Registered SwapStrategy
+
+📍 STEP 10: Configuring RiskManager...
+  ✅ Set risk parameters for AnkrStaking
+  ✅ Set risk parameters for MOREMarkets
+  ✅ Set risk parameters for AnkrLooping
+  ✅ Set risk parameters for Swap
+
+╔════════════════════════════════════════════════════════════╗
+║              DEPLOYMENT COMPLETE ✅                        ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 DEPLOYED CONTRACTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Core Contracts:
+  VaultCore:         0xc0F67510F9E8974345f7fE8b8981C780F94BFbf9
+  VaultExtension:    0x8e77E807946b3E09acf183f2A9e9cBDF14F4E171
+  StrategyManager:   0x915537401B7BC088d54a58e55b488B821508A55f
+  RiskManager:       0x13990F614A6F3A6ebec7CB7996A559Ad30276442
+  PriceOracle:       0x20128a983a34dE67681733b43f395286FD2b5F20
+  FrontendHelper:    0x0B24e308D88DeB1aB4113A2bcf6e011299C8b97b
+
+Strategy Contracts:
+  AnkrStaking:       0x7295A200Fcbfef54771430484426BAb5772f8D9b
+  MOREMarkets:       0xF3EE6953A914b2e26ED95d21655Dab46a7b7355b
+  AnkrLooping:       0x417c3bfBDb9B46903b553933611555E8277950A4
+  Swap:              0x7F0f76c069D85A5BE99dfD65baE9677f5DbFAfd9
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 Deployment info saved to: deployment-info.json
+
+🚀 NEXT STEPS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Test deposit:
+   npx hardhat run scripts/test-deposit.js --network flow_mainnet
+
+2. Test strategy execution:
+   npx hardhat run scripts/test-ankr-strategy.js --network flow_mainnet
+
+3. Verify contracts on block explorer
+
+4. Update frontend with contract addresses
+
+5. Grant AGENT_ROLE to your AI agent address
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🤖 AI AGENT INTEGRATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Your agent can now:
+  ✓ Execute Ankr staking with vault funds
+  ✓ Supply/borrow on MORE Markets
+  ✓ Run 1-3 loop leveraged staking
+  ✓ Swap tokens via PunchSwap
+  ✓ Query all metrics via FrontendHelper
+  ✓ Harvest yields and rebalance
+
+Grant AGENT_ROLE to your agent:
+  vaultCore.grantRole(AGENT_ROLE, agentAddress)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
