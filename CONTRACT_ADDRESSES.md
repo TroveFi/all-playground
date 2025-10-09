@@ -660,3 +660,13 @@ Your agent can now:
 Grant AGENT_ROLE to your agent:
   vaultCore.grantRole(AGENT_ROLE, agentAddress)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Cadence:
+VaultCore -> 0x79f5b5b0f95a160b [skipping, no changes found]
+IncrementStakingStrategy -> 0x79f5b5b0f95a160b [skipping, no changes found]
+IncrementLoopingStrategy -> 0x79f5b5b0f95a160b [skipping, no changes found]
+IncrementLendingStrategy -> 0x79f5b5b0f95a160b [skipping, no changes found]
+IncrementFarmingStrategy -> 0x79f5b5b0f95a160b [skipping, no changes found]
+SwapStrategy -> 0x79f5b5b0f95a160b [skipping, no changes found]
+AgentManager2 -> 0x79f5b5b0f95a160b (62ee63c5d04eb52c78abfcf3db7ce46e03adeec349411c131505e3b9e21fd2e7) [updated]
+VRFExtension -> 0x79f5b5b0f95a160b [skipping, no changes found]
