@@ -6,6 +6,8 @@ import LendingInterfaces from 0x2df970b6cdee5735
 import LendingComptroller from 0xf80cb737bfe7c792
 import LendingConfig from 0x2df970b6cdee5735
 
+// Lending Loop Uses LendingInterfaces for leverage
+
 transaction(initialStake: UFix64) {
     let flowVault: auth(FungibleToken.Withdraw) &FlowToken.Vault
     let stFlowVaultRef: &stFlowToken.Vault

@@ -4,6 +4,8 @@ import stFlowToken from 0xd6f80565193ad727
 import LiquidStaking from 0xd6f80565193ad727
 import SwapInterfaces from 0xb78ef7afa52ff906
 
+// Uses LiquidStaking and DEX swaps, not Staking farming pools
+
 transaction(flowAmount: UFix64) {
     let flowVault: auth(FungibleToken.Withdraw) &FlowToken.Vault
     let stFlowVaultRef: &stFlowToken.Vault
